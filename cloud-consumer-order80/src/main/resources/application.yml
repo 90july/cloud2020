@@ -8,4 +8,4 @@ eureka:
     fetch-registry: true
 spring:
   application:
-    name: cloud-consumer-order
+    name: cloud-order-service
