@@ -5,6 +5,7 @@ import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -40,4 +41,12 @@ public class PaymentController {
             return new CommonResult(444, "没有对应记录，查询ID："+id, payment);
         }
     }
+
+    @GetMapping(value="/payment/timeout")
+    public CommonResult paymentTimeout(){
+        return new CommonResult(200,"查询成功", serverPort);
+    }
+
+    @Value("${server.port}")
+    private String serverPort;
 }

@@ -18,4 +18,9 @@ public class OrderFeignController {
         return paymentFeignService.getPaymentById(id);
     }
 
+    @GetMapping(value="/consumer/payment/timeout")
+    public CommonResult paymentTimeout(){
+        return paymentFeignService.paymentTimeout();
+    }
+
 }
