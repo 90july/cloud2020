@@ -11,21 +11,21 @@ spring:
       label: master
   application:
     name: cloud-config-server
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka
-#rabbitmq相关配置，暴露bus刷新的端点
+##rabbitmq相关配置,暴露bus刷新配置的端点
 management:
-  endpoints:
+  endpoints: #暴露bus刷新配置的端点
     web:
       exposure:
-        include: "bus-refresh"
+        include: 'bus-refresh'
 logging:
   level:
     org.springframework.amqp: debug

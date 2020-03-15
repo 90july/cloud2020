@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dev
+logging:
+  level:
+    com.alibaba.cloud: debug
+    org.springframework.cloud: debug

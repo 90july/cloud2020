@@ -54,4 +54,9 @@ public class PaymentController {
     public String lb(){
         return serverPort;
     }
+
+    @GetMapping("/payment/zipkin")
+    public CommonResult<Payment> paymentZipkin(){
+        return new CommonResult<>(200,"PaymentController.paymentZipkin");
+    }
 }

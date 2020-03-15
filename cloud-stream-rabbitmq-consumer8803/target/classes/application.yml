@@ -1,0 +1,31 @@
+server:
+  port: 8803
+spring:
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          spring:
+            rabbitmq:
+              host: localhost
+              port: 5671
+              username: guest
+              password: guest
+      bindings:
+        input:
+          destination: studyexchange
+          content-type: application/json
+          binder: defaultRabbit
+          group: atguiguA
+  application:
+    name: cloud-stream-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    instance-id: receive-8803.com
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 5 #如果现在超过了5秒的间隔（默认是90秒）
+    lease-renewal-interval-in-seconds: 2 #设置心跳的时间默认是30秒
