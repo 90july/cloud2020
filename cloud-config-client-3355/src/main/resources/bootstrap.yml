@@ -1,16 +1,14 @@
 server:
-  port: 3344
+  port: 3355
 spring:
   cloud:
     config:
-      server:
-        git:
-          search-paths:
-            - springcloud-config
-          uri: git@github.com:90july/springcloud-config.git
       label: master
+      name: config
+      profile: dev
+      uri: http://localhost:3344/
   application:
-    name: cloud-config-server
+    name: config-client
   rabbitmq:
     host: localhost
     port: 5672
@@ -20,13 +18,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka
-#rabbitmq相关配置，暴露bus刷新的端点
 management:
   endpoints:
     web:
       exposure:
-        include: "bus-refresh"
+        include: "*"
 logging:
   level:
     org.springframework.amqp: debug
-
